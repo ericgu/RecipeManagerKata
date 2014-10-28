@@ -45,7 +45,7 @@ namespace RecipeManager
             foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
             {
                 m_recipes.Remove(recipeListViewItem.Recipe);
-                RecipeStore.DeleteRecipe(recipeListViewItem.Recipe.Name);
+                m_recipeStore.DeleteRecipe(recipeListViewItem.Recipe.Name);
             }
             PopulateList();
 
@@ -60,8 +60,15 @@ namespace RecipeManager
 
         private void SaveClick(object sender, EventArgs e)
         {
-            File.WriteAllText(Path.Combine("e:\\portkata", textBoxName.Text), textBoxObjectData.Text);
+            string name = textBoxName.Text;
+            string contents = textBoxObjectData.Text;
+            SaveRecipe(name, contents);
             LoadRecipes();
+        }
+
+        private static void SaveRecipe(string name, string contents)
+        {
+            File.WriteAllText(Path.Combine("e:\\portkata", name), contents);
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)

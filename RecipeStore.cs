@@ -36,9 +36,9 @@ namespace RecipeManager
                 .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
 
-        public static void DeleteRecipe(string name)
+        public void DeleteRecipe(string name)
         {
-            File.Delete(@"e:\portkata\" + name);
+            File.Delete(m_storageLocation + name);
         }
     }
 }
