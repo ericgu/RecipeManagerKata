@@ -31,22 +31,9 @@ namespace RecipeManager
 
         private void LoadRecipesPrivate(string storageLocation)
         {
-            var fileInfos = GetFilesInDirectory(storageLocation);
+            var fileInfos = RecipeStore.GetFilesInDirectory(storageLocation);
             m_recipes = fileInfos
-                .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
-        }
-
-        private static Recipe CreateRecipeFromFile(FileInfo fileInfo)
-        {
-            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
-        }
-
-        private static FileInfo[] GetFilesInDirectory(string storageLocation)
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(storageLocation);
-
-            FileInfo[] fileInfos = directoryInfo.GetFiles("*");
-            return fileInfos;
+                .Select(fileInfo => RecipeStore.CreateRecipeFromFile(fileInfo)).ToList();
         }
 
         private void PopulateList()

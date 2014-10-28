@@ -54,6 +54,7 @@
     <Compile Include="RecipeListViewItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeStore.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Recipe.cs" />
     <EmbeddedResource Include="Form1.resx">
