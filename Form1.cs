@@ -60,13 +60,8 @@ namespace RecipeManager
 
         private void SaveClick(object sender, EventArgs e)
         {
-            SaveRecipe(textBoxName.Text, textBoxObjectData.Text);
+            RecipeStore.SaveRecipe(textBoxName.Text, textBoxObjectData.Text);
             LoadRecipes();
-        }
-
-        private static void SaveRecipe(string name, string contents)
-        {
-            File.WriteAllText(Path.Combine("e:\\portkata", name), contents);
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
