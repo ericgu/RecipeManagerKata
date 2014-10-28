@@ -24,8 +24,7 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            string storageLocation = @"e:\portkata";
-            var fileInfos = GetFilesInDirectory(storageLocation);
+            var fileInfos = GetFilesInDirectory(@"e:\portkata");
             m_recipes = fileInfos
                 .Select(fileInfo => new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) }).ToList();
 
