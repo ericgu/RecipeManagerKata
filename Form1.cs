@@ -26,9 +26,14 @@ namespace RecipeManager
         {
             var fileInfos = GetFilesInDirectory(@"e:\portkata");
             m_recipes = fileInfos
-                .Select(fileInfo => new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) }).ToList();
+                .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
 
             PopulateList();
+        }
+
+        private static Recipe CreateRecipeFromFile(FileInfo fileInfo)
+        {
+            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
         }
 
         private static FileInfo[] GetFilesInDirectory(string storageLocation)
