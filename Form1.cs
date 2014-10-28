@@ -24,15 +24,15 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            LoadRecipesPrivate(@"e:\portkata");
+            m_recipes = LoadRecipesPrivate(@"e:\portkata");
 
             PopulateList();
         }
 
-        private void LoadRecipesPrivate(string storageLocation)
+        private List<Recipe> LoadRecipesPrivate(string storageLocation)
         {
             var fileInfos = RecipeStore.GetFilesInDirectory(storageLocation);
-            m_recipes = fileInfos
+            return  fileInfos
                 .Select(fileInfo => RecipeStore.CreateRecipeFromFile(fileInfo)).ToList();
         }
 
