@@ -24,16 +24,9 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            m_recipes = LoadRecipesPrivate(@"e:\portkata");
+            m_recipes = RecipeStore.LoadRecipes(@"e:\portkata");
 
             PopulateList();
-        }
-
-        private List<Recipe> LoadRecipesPrivate(string storageLocation)
-        {
-            var fileInfos = RecipeStore.GetFilesInDirectory(storageLocation);
-            return  fileInfos
-                .Select(fileInfo => RecipeStore.CreateRecipeFromFile(fileInfo)).ToList();
         }
 
         private void PopulateList()
