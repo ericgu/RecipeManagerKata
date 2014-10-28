@@ -14,7 +14,6 @@ namespace RecipeManager
         public RecipeStore(string storageLocation)
         {
             m_storageLocation = storageLocation;
-            
         }
 
         IEnumerable<FileInfo> GetFilesInDirectory()
@@ -38,12 +37,17 @@ namespace RecipeManager
 
         public void DeleteRecipe(string name)
         {
-            File.Delete(m_storageLocation + name);
+            File.Delete(GetRecipeFilename(name));
         }
 
         public void SaveRecipe(string name, string contents)
         {
-            File.WriteAllText(Path.Combine("e:\\portkata", name), contents);
+            File.WriteAllText(GetRecipeFilename(name), contents);
+        }
+
+        private string GetRecipeFilename(string name)
+        {
+            return Path.Combine(m_storageLocation, name);
         }
     }
 }
