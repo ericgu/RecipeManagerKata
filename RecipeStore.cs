@@ -35,5 +35,10 @@ namespace RecipeManager
             return  GetFilesInDirectory()
                 .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
+
+        public static void DeleteRecipe(string name)
+        {
+            File.Delete(@"e:\portkata\" + name);
+        }
     }
 }
