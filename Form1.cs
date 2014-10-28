@@ -13,7 +13,8 @@ namespace RecipeManager
 {
     public partial class Form1 : Form
     {
-        private List<Recipe> m_recipes = new List<Recipe>(); 
+        private List<Recipe> m_recipes = new List<Recipe>();
+        private readonly RecipeStore m_recipeStore = new RecipeStore(@"e:\portkata");
 
         public Form1()
         {
@@ -24,7 +25,7 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            m_recipes = RecipeStore.LoadRecipes(@"e:\portkata");
+            m_recipes = m_recipeStore.LoadRecipes();
 
             PopulateList();
         }

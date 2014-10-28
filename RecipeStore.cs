@@ -9,23 +9,30 @@ namespace RecipeManager
 {
     class RecipeStore
     {
-        static IEnumerable<FileInfo> GetFilesInDirectory(string storageLocation)
+        private readonly string m_storageLocation;
+
+        public RecipeStore(string storageLocation)
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(storageLocation);
+            m_storageLocation = storageLocation;
+            
+        }
+
+        IEnumerable<FileInfo> GetFilesInDirectory()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(m_storageLocation);
 
             FileInfo[] fileInfos = directoryInfo.GetFiles("*");
             return fileInfos;
         }
 
-        static Recipe CreateRecipeFromFile(FileInfo fileInfo)
+        Recipe CreateRecipeFromFile(FileInfo fileInfo)
         {
             return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
         }
 
-        public static List<Recipe> LoadRecipes(string storageLocation)
+        public List<Recipe> LoadRecipes()
         {
-            var fileInfos = GetFilesInDirectory(storageLocation);
-            return  fileInfos
+            return  GetFilesInDirectory()
                 .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
     }
