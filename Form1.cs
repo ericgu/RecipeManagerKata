@@ -60,7 +60,7 @@ namespace RecipeManager
 
         private void SaveClick(object sender, EventArgs e)
         {
-            RecipeStore.SaveRecipe(textBoxName.Text, textBoxObjectData.Text);
+            m_recipeStore.SaveRecipe(textBoxName.Text, textBoxObjectData.Text);
             LoadRecipes();
         }
 

@@ -41,7 +41,7 @@ namespace RecipeManager
             File.Delete(m_storageLocation + name);
         }
 
-        public static void SaveRecipe(string name, string contents)
+        public void SaveRecipe(string name, string contents)
         {
             File.WriteAllText(Path.Combine("e:\\portkata", name), contents);
         }
