@@ -24,11 +24,16 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            var fileInfos = GetFilesInDirectory(@"e:\portkata");
-            m_recipes = fileInfos
-                .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
+            LoadRecipesPrivate(@"e:\portkata");
 
             PopulateList();
+        }
+
+        private void LoadRecipesPrivate(string storageLocation)
+        {
+            var fileInfos = GetFilesInDirectory(storageLocation);
+            m_recipes = fileInfos
+                .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
 
         private static Recipe CreateRecipeFromFile(FileInfo fileInfo)
