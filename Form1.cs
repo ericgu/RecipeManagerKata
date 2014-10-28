@@ -45,14 +45,14 @@ namespace RecipeManager
             foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
             {
                 m_recipes.Remove(recipeListViewItem.Recipe);
-                DeleteRecipe(recipeListViewItem, recipeListViewItem.Recipe.Name);
+                DeleteRecipe(recipeListViewItem.Recipe.Name);
             }
             PopulateList();
 
             NewClick(null, null);
         }
 
-        private static void DeleteRecipe(RecipeListViewItem recipeListViewItem, string name)
+        private static void DeleteRecipe(string name)
         {
             File.Delete(@"e:\portkata\" + name);
         }
