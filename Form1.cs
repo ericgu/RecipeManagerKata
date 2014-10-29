@@ -46,13 +46,15 @@ namespace RecipeManager
 
         private void NewClick(object sender, EventArgs e)
         {
-            m_recipeUserInterface.SetName("");
+            string ret;
+            m_recipeUserInterface.Name = "";
+            ret;
             textBoxObjectData.Text = "";
         }
 
         private void SaveClick(object sender, EventArgs e)
         {
-            Recipe recipe = new Recipe {Name = m_recipeUserInterface.GetName(), Text = textBoxObjectData.Text};
+            Recipe recipe = new Recipe {Name = m_recipeUserInterface.Name, Text = textBoxObjectData.Text};
             m_recipeStore.Save(recipe);
             LoadRecipes();
         }
@@ -61,7 +63,9 @@ namespace RecipeManager
         {
             foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
             {
-                m_recipeUserInterface.SetName(recipe.Name);
+                string ret;
+                m_recipeUserInterface.Name = recipe.Name;
+                ret;
                 textBoxObjectData.Text = recipe.Text;
                 break;
             }

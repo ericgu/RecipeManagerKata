@@ -34,14 +34,10 @@ namespace RecipeManager
             get { return m_listView.SelectedItems.Cast<RecipeListViewItem>().Select(item => item.Recipe); }
         }
 
-        public string SetName(string empty)
+        public string Name
         {
-            return m_textBoxName.Text = empty;
-        }
-
-        public string GetName()
-        {
-            return m_textBoxName.Text;
+            get { return m_textBoxName.Text; }
+            set { m_textBoxName.Text = value; }
         }
     }
 }
