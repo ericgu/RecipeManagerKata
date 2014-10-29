@@ -25,6 +25,8 @@ namespace RecipeManager
             var recipes = m_simulator.LoadRecipes();
 
             ListContainsRecipesInOrder(recipes);
+
+            DeleteAllRecipes();
         }
 
         [TestMethod()]
@@ -37,7 +39,7 @@ namespace RecipeManager
 
             ListContainsRecipesInOrder(recipes, recipe);
 
-            m_simulator.DeleteRecipe(recipe);
+            DeleteAllRecipes();
         }
 
         [TestMethod()]
@@ -54,8 +56,7 @@ namespace RecipeManager
 
             ListContainsRecipesInOrder(recipes, recipe1, recipe2);
 
-            m_simulator.DeleteRecipe(recipe1);
-            m_simulator.DeleteRecipe(recipe2);
+            DeleteAllRecipes();
         }
 
         [TestMethod()]
@@ -72,7 +73,17 @@ namespace RecipeManager
 
             ListContainsRecipesInOrder(recipes, recipe2);
 
-            m_simulator.DeleteRecipe(recipe2);
+            DeleteAllRecipes();
+        }
+
+        private void DeleteAllRecipes()
+        {
+            var recipes = m_simulator.LoadRecipes();
+
+            foreach (Recipe recipe in recipes)
+            {
+                m_simulator.DeleteRecipe(recipe);
+            }
         }
 
         private static void ListContainsRecipesInOrder(List<Recipe> recipes, params Recipe[] expectedRecipes)
