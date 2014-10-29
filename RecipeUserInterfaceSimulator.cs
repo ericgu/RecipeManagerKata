@@ -42,10 +42,6 @@ namespace RecipeManager
             Contents = String.Empty;
         }
 
-        public void SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         internal void SimulatePressSave()
         {
             if (SaveRequested != null)
