@@ -5,7 +5,7 @@ namespace RecipeManager
     internal interface IRecipeStore
     {
         List<Recipe> LoadRecipes();
-        void DeleteRecipe(string name);
-        void SaveRecipe(string name, string contents);
+        void DeleteRecipe(Recipe recipe);
+        void SaveRecipe(Recipe recipe);
     }
 }

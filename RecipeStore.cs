@@ -35,14 +35,14 @@ namespace RecipeManager
                 .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
 
-        public void DeleteRecipe(string name)
+        public void DeleteRecipe(Recipe recipe)
         {
-            File.Delete(GetRecipeFilename(name));
+            File.Delete(GetRecipeFilename(recipe.Name));
         }
 
-        public void SaveRecipe(string name, string contents)
+        public void SaveRecipe(Recipe recipe)
         {
-            File.WriteAllText(GetRecipeFilename(name), contents);
+            File.WriteAllText(GetRecipeFilename(recipe.Name), recipe.Text);
         }
 
         private string GetRecipeFilename(string name)

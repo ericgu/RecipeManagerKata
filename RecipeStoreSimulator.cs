@@ -14,12 +14,12 @@ namespace RecipeManager
             return new List<Recipe>();
         }
 
-        public void DeleteRecipe(string name)
+        public void DeleteRecipe(Recipe recipe)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveRecipe(string name, string contents)
+        public void SaveRecipe(Recipe recipe)
         {
             throw new NotImplementedException();
         }
