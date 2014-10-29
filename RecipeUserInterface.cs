@@ -47,5 +47,11 @@ namespace RecipeManager
             get { return m_textBoxContents.Text; }
             set { m_textBoxContents.Text = value; }
         }
+
+        public void ClearNameAndContents()
+        {
+            Name = "";
+            Contents = "";
+        }
     }
 }

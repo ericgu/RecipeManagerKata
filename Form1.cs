@@ -41,18 +41,12 @@ namespace RecipeManager
 
             LoadRecipes();
 
-            ClearNameAndContents();
+            m_recipeUserInterface.ClearNameAndContents();
         }
 
         private void NewClick(object sender, EventArgs e)
         {
-            ClearNameAndContents();
-        }
-
-        private void ClearNameAndContents()
-        {
-            m_recipeUserInterface.Name = "";
-            m_recipeUserInterface.Contents = "";
+            m_recipeUserInterface.ClearNameAndContents();
         }
 
         private void SaveClick(object sender, EventArgs e)
