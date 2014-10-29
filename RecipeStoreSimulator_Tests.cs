@@ -10,7 +10,7 @@ namespace RecipeManager
     [TestClass]
     public class RecipeStoreSimulator_Tests
     {
-        private RecipeStoreSimulator m_simulator = new RecipeStoreSimulator();
+        private IRecipeStore m_simulator = new RecipeStoreSimulator();
 
         [TestMethod()]
         public void When_I_create_a_RecipeStoreSimulator__it_is_not_null()
@@ -40,7 +40,7 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_call_SaveRecipe_twice_and_call_LoadRecipes__it_returns_both_recipes()
         {
-            RecipeStoreSimulator m_simulator = new RecipeStoreSimulator();
+            IRecipeStore m_simulator = new RecipeStoreSimulator();
 
             Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
             m_simulator.SaveRecipe(recipe1);
