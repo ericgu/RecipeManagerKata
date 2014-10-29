@@ -28,7 +28,6 @@ namespace RecipeManager
             Assert.AreEqual(0, recipes.Count);
         }
 
-
         [TestMethod()]
         public void When_I_call_SaveRecipe_and_call_LoadRecipes__it_returns_that_recipe()
         {
@@ -44,5 +43,29 @@ namespace RecipeManager
             Assert.AreEqual(recipe.Text, recipes[0].Text);
             Assert.AreEqual(recipe.Size, recipes[0].Size);
         }
+
+        [TestMethod()]
+        public void When_I_call_SaveRecipe_twice_and_call_LoadRecipes__it_returns_both_recipes()
+        {
+            RecipeStoreSimulator simulator = new RecipeStoreSimulator();
+
+            Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
+            simulator.SaveRecipe(recipe1);
+            Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
+            simulator.SaveRecipe(recipe2);
+
+            var recipes = simulator.LoadRecipes();
+
+            Assert.AreEqual(2, recipes.Count);
+
+            Assert.AreEqual(recipe1.Name, recipes[1].Name);
+            Assert.AreEqual(recipe1.Text, recipes[1].Text);
+            Assert.AreEqual(recipe1.Size, recipes[1].Size);
+
+            Assert.AreEqual(recipe1.Name, recipes[1].Name);
+            Assert.AreEqual(recipe1.Text, recipes[1].Text);
+            Assert.AreEqual(recipe1.Size, recipes[1].Size);
+        }
+    
     }
 }

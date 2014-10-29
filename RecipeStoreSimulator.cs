@@ -9,7 +9,7 @@ namespace RecipeManager
 {
     class RecipeStoreSimulator : IRecipeStore
     {
-        private List<Recipe> m_recipes = new List<Recipe>();
+        private readonly List<Recipe> m_recipes = new List<Recipe>();
  
         public List<Recipe> LoadRecipes()
         {
