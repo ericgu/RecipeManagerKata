@@ -12,6 +12,7 @@ namespace RecipeManager
     public class RecipeUserInterfaceSimulator : IRecipeUserInterface
     {
         private List<Recipe> m_recipes;
+        private List<Recipe> m_selectedRecipes = new List<Recipe>();
 
         public event EventHandler NewRequested;
 
@@ -23,7 +24,7 @@ namespace RecipeManager
 
         public IEnumerable<Recipe> SelectedRecipes
         {
-            get { throw new NotImplementedException(); }
+            get { return m_selectedRecipes; }
         }
 
         public string Name { get; set; }
@@ -58,6 +59,13 @@ namespace RecipeManager
 
         internal void SimulateSelectRecipe(int selectedRecipeIndex)
         {
+            m_selectedRecipes = new List<Recipe>();
+            m_selectedRecipes.Add(m_recipes[selectedRecipeIndex]);
+
+            if (SelectedRecipesChanged != null)
+            {
+                SelectedRecipesChanged(this, null);
+            }
         }
     }
 }
