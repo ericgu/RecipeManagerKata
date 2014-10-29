@@ -15,6 +15,7 @@ namespace RecipeManager
     {
         private List<Recipe> m_recipes = new List<Recipe>();
         private readonly RecipeStore m_recipeStore = new RecipeStore(@"e:\portkata");
+        private RecipeUserInterface m_recipeUserInterface = new RecipeUserInterface();
 
         public Form1()
         {
@@ -27,7 +28,7 @@ namespace RecipeManager
         {
             m_recipes = m_recipeStore.Load();
 
-            new RecipeUserInterface().PopulateList(m_recipes, listView1);
+            m_recipeUserInterface.PopulateList(m_recipes, listView1);
         }
 
         private void DeleteClick(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace RecipeManager
                 m_recipes.Remove(recipeListViewItem.Recipe);
                 m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
-            new RecipeUserInterface().PopulateList(m_recipes, listView1);
+            m_recipeUserInterface.PopulateList(m_recipes, listView1);
 
             NewClick(null, null);
         }
