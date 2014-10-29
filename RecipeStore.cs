@@ -16,19 +16,6 @@ namespace RecipeManager
             m_storageLocation = storageLocation;
         }
 
-        IEnumerable<FileInfo> GetFilesInDirectory()
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(m_storageLocation);
-
-            FileInfo[] fileInfos = directoryInfo.GetFiles("*");
-            return fileInfos;
-        }
-
-        Recipe CreateRecipeFromFile(FileInfo fileInfo)
-        {
-            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
-        }
-
         public List<Recipe> Load()
         {
             return  GetFilesInDirectory()
@@ -43,6 +30,19 @@ namespace RecipeManager
         public void Save(Recipe recipe)
         {
             File.WriteAllText(GetRecipeFilename(recipe.Name), recipe.Text);
+        }
+
+        private IEnumerable<FileInfo> GetFilesInDirectory()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(m_storageLocation);
+
+            FileInfo[] fileInfos = directoryInfo.GetFiles("*");
+            return fileInfos;
+        }
+
+        private Recipe CreateRecipeFromFile(FileInfo fileInfo)
+        {
+            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
         }
 
         private string GetRecipeFilename(string name)
