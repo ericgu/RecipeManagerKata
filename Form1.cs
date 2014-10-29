@@ -22,8 +22,22 @@ namespace RecipeManager
             InitializeComponent();
 
             m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData, buttonNew, buttonSave);
+            m_recipeUserInterface.NewRequested += NewRequested;
+            m_recipeUserInterface.SaveRequested += SaveRequested;
 
             LoadRecipes();
+        }
+
+        void SaveRequested(object sender, EventArgs e)
+        {
+            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Text = m_recipeUserInterface.Contents };
+            m_recipeStore.Save(recipe);
+            LoadRecipes();
+        }
+
+        void NewRequested(object sender, EventArgs e)
+        {
+            m_recipeUserInterface.ClearNameAndContents();
         }
 
         private void LoadRecipes()
@@ -44,18 +58,6 @@ namespace RecipeManager
             m_recipeUserInterface.ClearNameAndContents();
         }
 
-        private void NewClick(object sender, EventArgs e)
-        {
-            m_recipeUserInterface.ClearNameAndContents();
-        }
-
-        private void SaveClick(object sender, EventArgs e)
-        {
-            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Text = m_recipeUserInterface.Contents };
-            m_recipeStore.Save(recipe);
-            LoadRecipes();
-        }
-        
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)

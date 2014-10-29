@@ -77,7 +77,12 @@
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.SaveClick);
+            this.buttonSave.Click += new System.EventHandler((sender, e) =>
+            {
+                Recipe recipe = new Recipe { Name = this.m_recipeUserInterface.Name, Text = this.m_recipeUserInterface.Contents };
+                this.m_recipeStore.Save(recipe);
+                this.LoadRecipes();
+            });
             // 
             // listView1
             // 
