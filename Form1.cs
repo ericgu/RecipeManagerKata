@@ -27,7 +27,7 @@ namespace RecipeManager
         {
             m_recipes = m_recipeStore.Load();
 
-            RecipeUI.PopulateList(m_recipes, listView1);
+            RecipeUI.PopulateList(m_recipes, listView1, new RecipeUI());
         }
 
         private void DeleteClick(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace RecipeManager
                 m_recipes.Remove(recipeListViewItem.Recipe);
                 m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
-            RecipeUI.PopulateList(m_recipes, listView1);
+            RecipeUI.PopulateList(m_recipes, listView1, new RecipeUI());
 
             NewClick(null, null);
         }
