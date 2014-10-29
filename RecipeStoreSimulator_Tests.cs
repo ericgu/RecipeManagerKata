@@ -10,7 +10,8 @@ namespace RecipeManager
     [TestClass]
     public class RecipeStoreSimulator_Tests
     {
-        private IRecipeStore m_simulator = new RecipeStoreSimulator();
+        //private IRecipeStore m_simulator = new RecipeStoreSimulator();
+        private IRecipeStore m_simulator = new RecipeStore(@"e:\TempRecipeStore");
 
         [TestMethod()]
         public void When_I_create_a_RecipeStoreSimulator__it_is_not_null()
@@ -35,6 +36,8 @@ namespace RecipeManager
             var recipes = m_simulator.LoadRecipes();
 
             ListContainsRecipesInOrder(recipes, recipe);
+
+            m_simulator.DeleteRecipe(recipe);
         }
 
         [TestMethod()]
@@ -50,6 +53,9 @@ namespace RecipeManager
             var recipes = m_simulator.LoadRecipes();
 
             ListContainsRecipesInOrder(recipes, recipe1, recipe2);
+
+            m_simulator.DeleteRecipe(recipe1);
+            m_simulator.DeleteRecipe(recipe2);
         }
 
         [TestMethod()]
@@ -65,6 +71,8 @@ namespace RecipeManager
             var recipes = m_simulator.LoadRecipes();
 
             ListContainsRecipesInOrder(recipes, recipe2);
+
+            m_simulator.DeleteRecipe(recipe2);
         }
 
         private static void ListContainsRecipesInOrder(List<Recipe> recipes, params Recipe[] expectedRecipes)
