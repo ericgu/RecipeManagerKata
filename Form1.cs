@@ -27,16 +27,16 @@ namespace RecipeManager
         {
             m_recipes = m_recipeStore.Load();
 
-            PopulateList();
+            PopulateList(m_recipes, listView1);
         }
 
-        private void PopulateList()
+        static void PopulateList(List<Recipe> mRecipes, ListView listView)
         {
-            listView1.Items.Clear();
+            listView.Items.Clear();
 
-            foreach (Recipe recipe in m_recipes)
+            foreach (Recipe recipe in mRecipes)
             {
-                listView1.Items.Add(new RecipeListViewItem(recipe));
+                listView.Items.Add(new RecipeListViewItem(recipe));
             }
         }
 
@@ -47,7 +47,7 @@ namespace RecipeManager
                 m_recipes.Remove(recipeListViewItem.Recipe);
                 m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
-            PopulateList();
+            PopulateList(m_recipes, listView1);
 
             NewClick(null, null);
         }
