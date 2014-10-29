@@ -8,7 +8,7 @@ namespace RecipeManager
 {
     class RecipeManager
     {
-        public RecipeManager()
+        public RecipeManager(RecipeStore recipeStore, RecipeUserInterface recipeUserInterface)
         {
             
         }
