@@ -34,11 +34,11 @@ namespace RecipeManager
 
         private void DeleteClick(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection selectedListViewItemCollection = m_recipeUserInterface.SelectedItems(listView1);
+            IEnumerable<Recipe> recipes = m_recipeUserInterface.SelectedItems();
 
-            foreach (RecipeListViewItem recipeListViewItem in selectedListViewItemCollection)
+            foreach (Recipe recipe in recipes)
             {
-                m_recipeStore.Delete(recipeListViewItem.Recipe);
+                m_recipeStore.Delete(recipe);
             }
 
             LoadRecipes();

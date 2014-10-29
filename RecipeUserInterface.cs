@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace RecipeManager
 {
@@ -26,9 +27,9 @@ namespace RecipeManager
             }
         }
 
-        public ListView.SelectedListViewItemCollection SelectedItems()
+        public IEnumerable<Recipe> SelectedItems()
         {
-            return m_listView.SelectedItems;
+            return m_listView.SelectedItems.Cast<RecipeListViewItem>().Select(item => item.Recipe);
         }
     }
 }
