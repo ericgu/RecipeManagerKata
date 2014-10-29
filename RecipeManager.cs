@@ -32,7 +32,7 @@ namespace RecipeManager
             if (firstRecipe != null)
             {
                 m_recipeUserInterface.Name = firstRecipe.Name;
-                m_recipeUserInterface.Contents = firstRecipe.Text;
+                m_recipeUserInterface.Contents = firstRecipe.Contents;
             }
             else
             {
@@ -55,7 +55,7 @@ namespace RecipeManager
 
         public void SaveRequested(object sender, EventArgs e)
         {
-            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Text = m_recipeUserInterface.Contents };
+            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Contents = m_recipeUserInterface.Contents };
             m_recipeStore.Save(recipe);
             LoadRecipes();
         }

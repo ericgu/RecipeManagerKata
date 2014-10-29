@@ -32,7 +32,7 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_call_SaveRecipe_and_call_LoadRecipes__it_returns_that_recipe()
         {
-            Recipe recipe = new Recipe {Name = "Eggs", Text = "Cook eggs", Size = 9};
+            Recipe recipe = new Recipe {Name = "Eggs", Contents = "Cook eggs", Size = 9};
             m_simulator.Save(recipe);
 
             var recipes = m_simulator.Load();
@@ -47,9 +47,9 @@ namespace RecipeManager
         {
             IRecipeStore m_simulator = new RecipeStoreSimulator();
 
-            Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
+            Recipe recipe1 = new Recipe { Name = "Ham", Contents = "Slice Ham", Size = 9 };
             m_simulator.Save(recipe1);
-            Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
+            Recipe recipe2 = new Recipe { Name = "Eggs", Contents = "Cook eggs", Size = 9 };
             m_simulator.Save(recipe2);
 
             var recipes = m_simulator.Load();
@@ -62,9 +62,9 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_call_SaveRecipe_twice_Delete_one_recipe_and_call_LoadRecipes__it_returns_one_recipe()
         {
-            Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
+            Recipe recipe1 = new Recipe { Name = "Ham", Contents = "Slice Ham", Size = 9 };
             m_simulator.Save(recipe1);
-            Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
+            Recipe recipe2 = new Recipe { Name = "Eggs", Contents = "Cook eggs", Size = 9 };
             m_simulator.Save(recipe2);
 
             m_simulator.Delete(recipe1);
@@ -93,7 +93,7 @@ namespace RecipeManager
             for (int i = 0; i < expectedRecipes.Length; i++)
             {
                 Assert.AreEqual(expectedRecipes[i].Name, recipes[i].Name);
-                Assert.AreEqual(expectedRecipes[i].Text, recipes[i].Text);
+                Assert.AreEqual(expectedRecipes[i].Contents, recipes[i].Contents);
                 Assert.AreEqual(expectedRecipes[i].Size, recipes[i].Size);
             }
         }

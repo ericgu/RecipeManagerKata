@@ -20,8 +20,8 @@ namespace RecipeManager
         }
         private void AddTwoRecipesToStore()
         {
-            m_recipeStore.Save(new Recipe {Name = "Toast", Text = "Put in toaster"});
-            m_recipeStore.Save(new Recipe {Name = "HashBrowns", Text = "Fry"});
+            m_recipeStore.Save(new Recipe {Name = "Toast", Contents = "Put in toaster"});
+            m_recipeStore.Save(new Recipe {Name = "HashBrowns", Contents = "Fry"});
         }
 
         [TestMethod()]
@@ -43,7 +43,7 @@ namespace RecipeManager
 
             var recipes = m_recipeStore.Load();
 
-            var expectedRecipe = new Recipe {Name = "Toast", Text = "Put in toaster"};
+            var expectedRecipe = new Recipe {Name = "Toast", Contents = "Put in toaster"};
             RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(recipes, expectedRecipe);
 
             RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(m_recipeUserInterface.SimulateReadRecipeList(),
@@ -75,7 +75,7 @@ namespace RecipeManager
             m_recipeUserInterface.SimulateSelectRecipe(1);
 
             Assert.AreEqual(secondRecipeInStore.Name, m_recipeUserInterface.Name);
-            Assert.AreEqual(secondRecipeInStore.Text, m_recipeUserInterface.Contents);
+            Assert.AreEqual(secondRecipeInStore.Contents, m_recipeUserInterface.Contents);
 
             Assert.AreEqual(secondRecipeInStore, m_recipeUserInterface.SelectedRecipes.FirstOrDefault());
         }

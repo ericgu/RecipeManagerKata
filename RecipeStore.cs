@@ -29,7 +29,7 @@ namespace RecipeManager
 
         public void Save(Recipe recipe)
         {
-            File.WriteAllText(GetRecipeFilename(recipe.Name), recipe.Text);
+            File.WriteAllText(GetRecipeFilename(recipe.Name), recipe.Contents);
         }
 
         private IEnumerable<FileInfo> GetFilesInDirectory()
@@ -42,7 +42,7 @@ namespace RecipeManager
 
         private Recipe CreateRecipeFromFile(FileInfo fileInfo)
         {
-            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
+            return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Contents = File.ReadAllText(fileInfo.FullName) };
         }
 
         private string GetRecipeFilename(string name)

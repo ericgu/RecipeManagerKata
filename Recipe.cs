@@ -10,7 +10,7 @@ namespace RecipeManager
     public class Recipe
     {
         public string Name { get; set; }
-        public string Text { get; set; }
+        public string Contents { get; set; }
         public long Size { get; set; }
     }
 }
