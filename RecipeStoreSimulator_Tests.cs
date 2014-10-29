@@ -39,8 +39,7 @@ namespace RecipeManager
             var recipes = simulator.LoadRecipes();
 
             Assert.AreEqual(1, recipes.Count);
-            int recipeIndex = 0;
-            CompareRecipeToRecipeInList(recipe, recipes, recipeIndex);
+            CompareRecipeToRecipeInList(recipe, recipes, 0);
         }
 
         private static void CompareRecipeToRecipeInList(Recipe recipe, List<Recipe> recipes, int recipeIndex)
