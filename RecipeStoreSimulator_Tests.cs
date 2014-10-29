@@ -86,7 +86,7 @@ namespace RecipeManager
             }
         }
 
-        private static void ListContainsRecipesInOrder(List<Recipe> recipes, params Recipe[] expectedRecipes)
+        public static void ListContainsRecipesInOrder(List<Recipe> recipes, params Recipe[] expectedRecipes)
         {
             Assert.AreEqual(expectedRecipes.Length, recipes.Count);
 

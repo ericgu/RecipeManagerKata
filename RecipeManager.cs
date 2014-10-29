@@ -9,10 +9,10 @@ namespace RecipeManager
     class RecipeManager
     {
         private List<Recipe> m_recipes; 
-        private RecipeStore m_recipeStore;
-        private RecipeUserInterface m_recipeUserInterface;
+        private IRecipeStore m_recipeStore;
+        private IRecipeUserInterface m_recipeUserInterface;
 
-        public RecipeManager(RecipeStore recipeStore, RecipeUserInterface recipeUserInterface)
+        public RecipeManager(IRecipeStore recipeStore, IRecipeUserInterface recipeUserInterface)
         {
             m_recipeUserInterface = recipeUserInterface;
             m_recipeStore = recipeStore;

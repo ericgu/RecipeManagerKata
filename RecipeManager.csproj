@@ -59,7 +59,9 @@
     <Compile Include="RecipeManager.cs" />
     <Compile Include="RecipeStoreSimulator.cs" />
     <Compile Include="RecipeStore.cs" />
+    <Compile Include="RecipeManager_Tests.cs" />
     <Compile Include="RecipeStoreSimulator_Tests.cs" />
+    <Compile Include="RecipeUserInterfaceSimulator.cs" />
     <Compile Include="RecipeUserInterface.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Recipe.cs" />
