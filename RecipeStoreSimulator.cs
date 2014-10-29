@@ -11,7 +11,7 @@ namespace RecipeManager
     {
         public List<Recipe> LoadRecipes()
         {
-            throw new NotImplementedException();
+            return new List<Recipe>();
         }
 
         public void DeleteRecipe(string name)
