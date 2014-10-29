@@ -12,11 +12,13 @@ namespace RecipeManager
     {
         private ListView m_listView;
         private TextBox m_textBoxName;
+        private TextBox m_textBoxContents;
 
-        public RecipeUserInterface(ListView listView, TextBox textBoxName)
+        public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents)
         {
             m_listView = listView;
             m_textBoxName = textBoxName;
+            m_textBoxContents = textBoxContents;
         }
 
         public void PopulateList(List<Recipe> mRecipes)
@@ -40,14 +42,14 @@ namespace RecipeManager
             set { m_textBoxName.Text = value; }
         }
 
-        public string SetContents(TextBox textBoxContents, string empty)
+        public string SetContents(string empty)
         {
-            return textBoxContents.Text = empty;
+            return m_textBoxContents.Text = empty;
         }
 
-        public string GetContents(TextBox textBoxContents)
+        public string GetContents()
         {
-            return textBoxContents.Text;
+            return m_textBoxContents.Text;
         }
     }
 }
