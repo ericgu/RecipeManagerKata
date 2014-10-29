@@ -34,13 +34,21 @@ namespace RecipeManager
 
         private void DeleteClick(object sender, EventArgs e)
         {
-            foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
+            ListView.SelectedListViewItemCollection selectedListViewItemCollection = SelectedItems();
+
+            foreach (RecipeListViewItem recipeListViewItem in selectedListViewItemCollection)
             {
                 m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
+
             LoadRecipes();
 
             NewClick(null, null);
+        }
+
+        private ListView.SelectedListViewItemCollection SelectedItems()
+        {
+            return listView1.SelectedItems;
         }
 
         private void NewClick(object sender, EventArgs e)
