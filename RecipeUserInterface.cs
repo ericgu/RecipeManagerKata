@@ -26,9 +26,9 @@ namespace RecipeManager
             }
         }
 
-        public ListView.SelectedListViewItemCollection SelectedItems(ListView listView)
+        public ListView.SelectedListViewItemCollection SelectedItems()
         {
-            return listView.SelectedItems;
+            return m_listView.SelectedItems;
         }
     }
 }
