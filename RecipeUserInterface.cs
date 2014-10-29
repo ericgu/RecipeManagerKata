@@ -9,13 +9,20 @@ namespace RecipeManager
 {
     class RecipeUserInterface
     {
-        public void PopulateList(List<Recipe> mRecipes, ListView listView)
+        private ListView m_listView;
+
+        public RecipeUserInterface(ListView listView)
         {
-            listView.Items.Clear();
+            m_listView = listView;
+        }
+
+        public void PopulateList(List<Recipe> mRecipes)
+        {
+            m_listView.Items.Clear();
 
             foreach (Recipe recipe in mRecipes)
             {
-                listView.Items.Add(new RecipeListViewItem(recipe));
+                m_listView.Items.Add(new RecipeListViewItem(recipe));
             }
         }
     }
