@@ -39,9 +39,10 @@ namespace RecipeManager
             var recipes = simulator.LoadRecipes();
 
             Assert.AreEqual(1, recipes.Count);
-            Assert.AreEqual(recipe.Name, recipes[0].Name);
-            Assert.AreEqual(recipe.Text, recipes[0].Text);
-            Assert.AreEqual(recipe.Size, recipes[0].Size);
+            int recipeIndex = 0;
+            Assert.AreEqual(recipe.Name, recipes[recipeIndex].Name);
+            Assert.AreEqual(recipe.Text, recipes[recipeIndex].Text);
+            Assert.AreEqual(recipe.Size, recipes[recipeIndex].Size);
         }
 
         [TestMethod()]
