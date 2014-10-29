@@ -25,5 +25,10 @@ namespace RecipeManager
                 m_listView.Items.Add(new RecipeListViewItem(recipe));
             }
         }
+
+        public static ListView.SelectedListViewItemCollection SelectedItems(ListView listView)
+        {
+            return listView.SelectedItems;
+        }
     }
 }

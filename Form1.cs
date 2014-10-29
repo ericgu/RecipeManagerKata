@@ -34,7 +34,7 @@ namespace RecipeManager
 
         private void DeleteClick(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection selectedListViewItemCollection = SelectedItems();
+            ListView.SelectedListViewItemCollection selectedListViewItemCollection = RecipeUserInterface.SelectedItems(listView1);
 
             foreach (RecipeListViewItem recipeListViewItem in selectedListViewItemCollection)
             {
@@ -44,11 +44,6 @@ namespace RecipeManager
             LoadRecipes();
 
             NewClick(null, null);
-        }
-
-        private ListView.SelectedListViewItemCollection SelectedItems()
-        {
-            return listView1.SelectedItems;
         }
 
         private void NewClick(object sender, EventArgs e)
