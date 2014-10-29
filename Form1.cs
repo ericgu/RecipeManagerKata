@@ -13,6 +13,7 @@ namespace RecipeManager
 {
     public partial class Form1 : Form
     {
+        private RecipeManager m_recipeManager;
         private List<Recipe> m_recipes = new List<Recipe>();
         private readonly RecipeStore m_recipeStore = new RecipeStore(@"e:\portkata");
         private RecipeUserInterface m_recipeUserInterface;
@@ -22,11 +23,18 @@ namespace RecipeManager
             InitializeComponent();
 
             m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData, buttonNew, buttonSave, buttonDelete);
+            m_recipeManager = new RecipeManager();
+            
+            SetupEvents();
+
+            LoadRecipes();
+        }
+
+        private void SetupEvents()
+        {
             m_recipeUserInterface.NewRequested += NewRequested;
             m_recipeUserInterface.SaveRequested += SaveRequested;
             m_recipeUserInterface.DeleteRequested += DeleteRequested;
-
-            LoadRecipes();
         }
 
         void DeleteRequested(object sender, EventArgs e)

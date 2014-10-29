@@ -55,6 +55,7 @@
     <Compile Include="RecipeListViewItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeManager.cs" />
     <Compile Include="RecipeStoreSimulator.cs" />
     <Compile Include="RecipeStore.cs" />
     <Compile Include="RecipeStoreSimulator_Tests.cs" />
