@@ -63,14 +63,8 @@ namespace RecipeManager
 
             Assert.AreEqual(2, recipes.Count);
 
-            Assert.AreEqual(recipe1.Name, recipes[1].Name);
-            Assert.AreEqual(recipe1.Text, recipes[1].Text);
-            Assert.AreEqual(recipe1.Size, recipes[1].Size);
-
-            Assert.AreEqual(recipe1.Name, recipes[1].Name);
-            Assert.AreEqual(recipe1.Text, recipes[1].Text);
-            Assert.AreEqual(recipe1.Size, recipes[1].Size);
+            CompareRecipeToRecipeInList(recipe1, recipes, 0);
+            CompareRecipeToRecipeInList(recipe2, recipes, 1);
         }
-    
     }
 }
