@@ -9,7 +9,7 @@ namespace RecipeManager
 {
     class RecipeUI
     {
-        public static void PopulateList(List<Recipe> mRecipes, ListView listView, RecipeUI recipeUI)
+        public void PopulateList(List<Recipe> mRecipes, ListView listView)
         {
             listView.Items.Clear();
 
