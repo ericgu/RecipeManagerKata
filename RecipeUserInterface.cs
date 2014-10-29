@@ -13,9 +13,13 @@ namespace RecipeManager
         private ListView m_listView;
         private TextBox m_textBoxName;
         private TextBox m_textBoxContents;
+        private Button m_newButton;
+        private Button m_saveButton;
 
         public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents, Button newButton, Button saveButton)
         {
+            m_saveButton = saveButton;
+            m_newButton = newButton;
             m_listView = listView;
             m_textBoxName = textBoxName;
             m_textBoxContents = textBoxContents;
