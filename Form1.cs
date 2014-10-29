@@ -46,32 +46,22 @@ namespace RecipeManager
 
         private void NewClick(object sender, EventArgs e)
         {
-            SetName("", textBoxName);
+            RecipeUserInterface.SetName("", textBoxName);
             textBoxObjectData.Text = "";
-        }
-
-        private static string SetName(string empty, TextBox textBoxName)
-        {
-            return textBoxName.Text = empty;
         }
 
         private void SaveClick(object sender, EventArgs e)
         {
-            Recipe recipe = new Recipe {Name = GetName(textBoxName.Text), Text = textBoxObjectData.Text};
+            Recipe recipe = new Recipe {Name = RecipeUserInterface.GetName(textBoxName.Text), Text = textBoxObjectData.Text};
             m_recipeStore.Save(recipe);
             LoadRecipes();
-        }
-
-        private static string GetName(string textBoxName)
-        {
-            return textBoxName;
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
             {
-                SetName(recipe.Name, textBoxName);
+                RecipeUserInterface.SetName(recipe.Name, textBoxName);
                 textBoxObjectData.Text = recipe.Text;
                 break;
             }

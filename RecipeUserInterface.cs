@@ -31,5 +31,15 @@ namespace RecipeManager
         {
             get { return m_listView.SelectedItems.Cast<RecipeListViewItem>().Select(item => item.Recipe); }
         }
+
+        public static string SetName(string empty, TextBox textBoxName)
+        {
+            return textBoxName.Text = empty;
+        }
+
+        public static string GetName(string textBoxName)
+        {
+            return textBoxName;
+        }
     }
 }
