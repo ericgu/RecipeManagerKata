@@ -47,12 +47,12 @@ namespace RecipeManager
         private void NewClick(object sender, EventArgs e)
         {
             m_recipeUserInterface.Name = "";
-            m_recipeUserInterface.SetContents("");
+            m_recipeUserInterface.Contents = "";
         }
 
         private void SaveClick(object sender, EventArgs e)
         {
-            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Text = m_recipeUserInterface.GetContents() };
+            Recipe recipe = new Recipe { Name = m_recipeUserInterface.Name, Text = m_recipeUserInterface.Contents };
             m_recipeStore.Save(recipe);
             LoadRecipes();
         }
@@ -62,7 +62,7 @@ namespace RecipeManager
             foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
             {
                 m_recipeUserInterface.Name = recipe.Name;
-                m_recipeUserInterface.SetContents(recipe.Text);
+                m_recipeUserInterface.Contents = recipe.Text;
                 break;
             }
         }

@@ -42,20 +42,10 @@ namespace RecipeManager
             set { m_textBoxName.Text = value; }
         }
 
-        public void SetContents(string empty)
-        {
-            Contents = empty;
-        }
-
         public string Contents
         {
             get { return m_textBoxContents.Text; }
             set { m_textBoxContents.Text = value; }
-        }
-
-        public string GetContents()
-        {
-            return Contents;
         }
     }
 }
