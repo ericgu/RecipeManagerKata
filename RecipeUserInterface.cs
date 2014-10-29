@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace RecipeManager
         private Button m_newButton;
         private Button m_saveButton;
 
+        public event EventHandler NewRequested;
+        public event EventHandler SaveRequested; 
+
         public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents, Button newButton, Button saveButton)
         {
             m_saveButton = saveButton;
@@ -24,18 +28,24 @@ namespace RecipeManager
             m_textBoxName = textBoxName;
             m_textBoxContents = textBoxContents;
 
-            m_newButton.Click += m_newButton_Click;
-            m_saveButton.Click += m_saveButton_Click;
+            m_newButton.Click += NewButtonClick;
+            m_saveButton.Click += SaveButtonClick;
         }
 
-        void m_saveButton_Click(object sender, EventArgs e)
+        void SaveButtonClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (SaveRequested != null)
+            {
+                SaveRequested(this, null);
+            }
         }
 
-        void m_newButton_Click(object sender, EventArgs e)
+        void NewButtonClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (NewRequested != null)
+            {
+                NewRequested(this, null);
+            }
         }
 
         public void PopulateList(List<Recipe> mRecipes)
