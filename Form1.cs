@@ -29,7 +29,6 @@ namespace RecipeManager
         private void LoadRecipes()
         {
             m_recipes = m_recipeStore.Load();
-
             m_recipeUserInterface.PopulateList(m_recipes);
         }
 
@@ -37,10 +36,9 @@ namespace RecipeManager
         {
             foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
             {
-                m_recipes.Remove(recipeListViewItem.Recipe);
                 m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
-            m_recipeUserInterface.PopulateList(m_recipes);
+            LoadRecipes();
 
             NewClick(null, null);
         }
