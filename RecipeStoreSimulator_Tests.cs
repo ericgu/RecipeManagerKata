@@ -40,6 +40,11 @@ namespace RecipeManager
 
             Assert.AreEqual(1, recipes.Count);
             int recipeIndex = 0;
+            CompareRecipeToRecipeInList(recipe, recipes, recipeIndex);
+        }
+
+        private static void CompareRecipeToRecipeInList(Recipe recipe, List<Recipe> recipes, int recipeIndex)
+        {
             Assert.AreEqual(recipe.Name, recipes[recipeIndex].Name);
             Assert.AreEqual(recipe.Text, recipes[recipeIndex].Text);
             Assert.AreEqual(recipe.Size, recipes[recipeIndex].Size);
