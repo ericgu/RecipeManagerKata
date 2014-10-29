@@ -8,6 +8,7 @@ namespace RecipeManager
         event EventHandler NewRequested;
         event EventHandler SaveRequested;
         event EventHandler DeleteRequested;
+        event EventHandler SelectedRecipesChanged;
         IEnumerable<Recipe> SelectedRecipes { get; }
         string Name { get; set; }
         string Contents { get; set; }

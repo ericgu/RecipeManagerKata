@@ -39,7 +39,6 @@ namespace RecipeManager
                 new Recipe {Name = "Toast", Text = "Put in toaster"});
         }
 
-
         [TestMethod()]
         public void When_I_start_with_two_recipes_in_the_store__they_should_be_populated_in_the_UI()
         {
@@ -57,5 +56,25 @@ namespace RecipeManager
 
             RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(recipes, recipe1, recipe2);
         }
+
+        [TestMethod()]
+        public void When_I_start_with_two_recipes_in_the_store_and_select_the_second_one__the_name_and_text_should_be_properly_set()
+        {
+            RecipeStoreSimulator store = new RecipeStoreSimulator();
+            var recipe1 = new Recipe { Name = "Toast", Text = "Put in toaster" };
+            store.Save(recipe1);
+            var recipe2 = new Recipe { Name = "HashBrowns", Text = "Fry" };
+            store.Save(recipe2);
+
+            RecipeUserInterfaceSimulator userInterface = new RecipeUserInterfaceSimulator();
+
+            RecipeManager recipeManager = new RecipeManager(store, userInterface);
+
+            userInterface.SimulateSelectRecipe(1);
+
+            Assert.AreEqual("HashBrowns", userInterface.Name);
+            Assert.AreEqual("Fry", userInterface.Contents);
+        }
+    
     }
 }

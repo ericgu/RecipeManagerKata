@@ -20,8 +20,20 @@ namespace RecipeManager
             m_recipeUserInterface.NewRequested += NewRequested;
             m_recipeUserInterface.SaveRequested += SaveRequested;
             m_recipeUserInterface.DeleteRequested += DeleteRequested;
+            m_recipeUserInterface.SelectedRecipesChanged += SelectedRecipesChanged;
 
             LoadRecipes();
+        }
+
+        void SelectedRecipesChanged(object sender, EventArgs e)
+        {
+            var firstRecipe = m_recipeUserInterface.SelectedRecipes.FirstOrDefault();
+
+            if (firstRecipe != null)
+            {
+                m_recipeUserInterface.Name = firstRecipe.Name;
+                m_recipeUserInterface.Contents = firstRecipe.Text;
+            }
         }
 
         public void DeleteRequested(object sender, EventArgs e)
@@ -53,6 +65,7 @@ namespace RecipeManager
             m_recipes = m_recipeStore.Load();
             m_recipeUserInterface.PopulateList(m_recipes);
         }
+
 
     }
 }

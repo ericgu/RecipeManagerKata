@@ -20,7 +20,8 @@ namespace RecipeManager
 
         public event EventHandler NewRequested;
         public event EventHandler SaveRequested;
-        public event EventHandler DeleteRequested; 
+        public event EventHandler DeleteRequested;
+        public event EventHandler SelectedRecipesChanged;
 
         public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents, Button newButton, Button saveButton, Button deleteButton)
         {
@@ -96,11 +97,9 @@ namespace RecipeManager
 
         public void SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (Recipe recipe in SelectedRecipes)
+            if (SelectedRecipesChanged != null)
             {
-                Name = recipe.Name;
-                Contents = recipe.Text;
-                break;
+                SelectedRecipesChanged(this, null);
             }
         }
     }
