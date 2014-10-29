@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace RecipeManager
 {
-    class RecipeUI
+    class RecipeUserInterface
     {
         public void PopulateList(List<Recipe> mRecipes, ListView listView)
         {
