@@ -66,5 +66,25 @@ namespace RecipeManager
             CompareRecipeToRecipeInList(recipe1, recipes, 0);
             CompareRecipeToRecipeInList(recipe2, recipes, 1);
         }
+    
+        [TestMethod()]
+        public void When_I_call_SaveRecipe_twice_Delete_one_recipe_and_call_LoadRecipes__it_returns_one_recipe()
+        {
+            RecipeStoreSimulator simulator = new RecipeStoreSimulator();
+
+            Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
+            simulator.SaveRecipe(recipe1);
+            Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
+            simulator.SaveRecipe(recipe2);
+
+            simulator.DeleteRecipe(recipe1);
+
+            var recipes = simulator.LoadRecipes();
+
+            Assert.AreEqual(1, recipes.Count);
+
+            CompareRecipeToRecipeInList(recipe2, recipes, 0);
+        }
     }
+
 }
