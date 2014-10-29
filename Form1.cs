@@ -21,7 +21,7 @@ namespace RecipeManager
         {
             InitializeComponent();
 
-            m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData);
+            m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData, buttonNew, buttonSave);
 
             LoadRecipes();
         }
