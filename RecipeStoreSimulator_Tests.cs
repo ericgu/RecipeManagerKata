@@ -21,8 +21,6 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_create_a_RecipeStoreSimulator_and_call_LoadRecipes__it_returns_an_empty_list()
         {
-            RecipeStoreSimulator m_simulator = new RecipeStoreSimulator();
-
             var recipes = m_simulator.LoadRecipes();
 
             ListContainsRecipesInOrder(recipes);
@@ -31,8 +29,6 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_call_SaveRecipe_and_call_LoadRecipes__it_returns_that_recipe()
         {
-            RecipeStoreSimulator m_simulator = new RecipeStoreSimulator();
-
             Recipe recipe = new Recipe {Name = "Eggs", Text = "Cook eggs", Size = 9};
             m_simulator.SaveRecipe(recipe);
 
@@ -59,8 +55,6 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_call_SaveRecipe_twice_Delete_one_recipe_and_call_LoadRecipes__it_returns_one_recipe()
         {
-            RecipeStoreSimulator m_simulator = new RecipeStoreSimulator();
-
             Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
             m_simulator.SaveRecipe(recipe1);
             Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
