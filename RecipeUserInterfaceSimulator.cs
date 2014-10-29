@@ -60,7 +60,10 @@ namespace RecipeManager
         internal void SimulateSelectRecipe(int selectedRecipeIndex)
         {
             m_selectedRecipes = new List<Recipe>();
-            m_selectedRecipes.Add(m_recipes[selectedRecipeIndex]);
+            if (selectedRecipeIndex != -1)
+            {
+                m_selectedRecipes.Add(m_recipes[selectedRecipeIndex]);
+            }
 
             if (SelectedRecipesChanged != null)
             {

@@ -34,6 +34,11 @@ namespace RecipeManager
                 m_recipeUserInterface.Name = firstRecipe.Name;
                 m_recipeUserInterface.Contents = firstRecipe.Text;
             }
+            else
+            {
+                m_recipeUserInterface.Name = String.Empty;
+                m_recipeUserInterface.Contents = String.Empty;
+            }
         }
 
         public void DeleteRequested(object sender, EventArgs e)

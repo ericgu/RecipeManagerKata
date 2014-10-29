@@ -79,6 +79,22 @@ namespace RecipeManager
 
             Assert.AreEqual(secondRecipeInStore, m_recipeUserInterface.SelectedRecipes.FirstOrDefault());
         }
+
+        [TestMethod()]
+        public void When_I_start_with_two_recipes_in_the_store_and_select_the_first_one_and_then_deselect_it__the_selecte_recipe_and_name_and_text_should_be_clear()
+        {
+            AddTwoRecipesToStore();
+
+            RecipeManager recipeManager = new RecipeManager(m_recipeStore, m_recipeUserInterface);
+
+            m_recipeUserInterface.SimulateSelectRecipe(1);
+            m_recipeUserInterface.SimulateSelectRecipe(-1);
+
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Name);
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Contents);
+
+            Assert.AreEqual(0, m_recipeUserInterface.SelectedRecipes.Count());
+        }
     
     }
 }
