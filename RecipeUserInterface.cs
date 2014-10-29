@@ -39,5 +39,15 @@ namespace RecipeManager
             get { return m_textBoxName.Text; }
             set { m_textBoxName.Text = value; }
         }
+
+        public static string SetContents(TextBox textBoxContents, string empty)
+        {
+            return textBoxContents.Text = empty;
+        }
+
+        public static string GetContents(TextBox textBoxContents)
+        {
+            return textBoxContents.Text;
+        }
     }
 }
