@@ -89,7 +89,7 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler((sender, e) => new RecipeUserInterface(this.listView1, this.textBoxName, this.textBoxObjectData, this.buttonNew, this.buttonSave, this.buttonDelete).SelectedIndexChanged(sender, e));
+
             // 
             // columnHeader1
             // 

@@ -14,6 +14,5 @@ namespace RecipeManager
         string Contents { get; set; }
         void PopulateList(List<Recipe> mRecipes);
         void ClearNameAndContents();
-        void SelectedIndexChanged(object sender, EventArgs e);
     }
 }
