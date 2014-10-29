@@ -65,12 +65,10 @@ namespace RecipeManager
             m_recipeUserInterface.ClearNameAndContents();
         }
 
-        public void LoadRecipes()
+        private void LoadRecipes()
         {
             m_recipes = m_recipeStore.Load();
             m_recipeUserInterface.PopulateList(m_recipes);
         }
-
-
     }
 }
