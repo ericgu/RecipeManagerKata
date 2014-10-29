@@ -58,6 +58,7 @@
     <Compile Include="RecipeStoreSimulator.cs" />
     <Compile Include="RecipeStore.cs" />
     <Compile Include="RecipeStoreSimulator_Tests.cs" />
+    <Compile Include="RecipeUI.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Recipe.cs" />
     <EmbeddedResource Include="Form1.resx">
