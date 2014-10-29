@@ -21,7 +21,7 @@ namespace RecipeManager
 
         public void SaveRecipe(Recipe recipe)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
