@@ -62,11 +62,11 @@ namespace RecipeManager
             }
         }
 
-        public void PopulateList(List<Recipe> mRecipes)
+        public void PopulateList(List<Recipe> recipes)
         {
             m_listView.Items.Clear();
 
-            foreach (Recipe recipe in mRecipes)
+            foreach (Recipe recipe in recipes)
             {
                 m_listView.Items.Add(new RecipeListViewItem(recipe));
             }

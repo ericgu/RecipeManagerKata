@@ -12,7 +12,7 @@ namespace RecipeManager
         IEnumerable<Recipe> SelectedRecipes { get; }
         string Name { get; set; }
         string Contents { get; set; }
-        void PopulateList(List<Recipe> mRecipes);
+        void PopulateList(List<Recipe> recipes);
         void ClearNameAndContents();
     }
 }
