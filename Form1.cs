@@ -59,10 +59,10 @@ namespace RecipeManager
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
+            foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
             {
-                textBoxName.Text = recipeListViewItem.Recipe.Name;
-                textBoxObjectData.Text = recipeListViewItem.Recipe.Text;
+                textBoxName.Text = recipe.Name;
+                textBoxObjectData.Text = recipe.Text;
                 break;
             }
         }
