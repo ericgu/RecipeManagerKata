@@ -9,7 +9,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace RecipeManager
 {
-    class RecipeUserInterface
+    public class RecipeUserInterface
     {
         private ListView m_listView;
         private TextBox m_textBoxName;

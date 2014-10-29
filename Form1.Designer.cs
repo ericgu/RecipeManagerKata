@@ -57,17 +57,7 @@
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler((sender1, e1) =>
-            {
-                foreach (Recipe recipe in this.m_recipeUserInterface.SelectedRecipes)
-                {
-                    this.m_recipeStore.Delete(recipe);
-                }
 
-                this.LoadRecipes();
-
-                this.m_recipeUserInterface.ClearNameAndContents();
-            });
             // 
             // buttonNew
             // 
@@ -86,12 +76,7 @@
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler((sender, e) =>
-            {
-                Recipe recipe = new Recipe { Name = this.m_recipeUserInterface.Name, Text = this.m_recipeUserInterface.Contents };
-                this.m_recipeStore.Save(recipe);
-                this.LoadRecipes();
-            });
+
             // 
             // listView1
             // 

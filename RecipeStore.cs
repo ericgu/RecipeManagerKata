@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecipeManager
 {
-    class RecipeStore : IRecipeStore
+    public class RecipeStore : IRecipeStore
     {
         private readonly string m_storageLocation;
 
