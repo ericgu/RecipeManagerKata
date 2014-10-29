@@ -9,9 +9,11 @@ namespace RecipeManager
 {
     class RecipeStoreSimulator : IRecipeStore
     {
+        private List<Recipe> m_recipes = new List<Recipe>();
+ 
         public List<Recipe> LoadRecipes()
         {
-            return new List<Recipe>();
+            return m_recipes.ToList();
         }
 
         public void DeleteRecipe(Recipe recipe)
@@ -21,7 +23,7 @@ namespace RecipeManager
 
         public void SaveRecipe(Recipe recipe)
         {
-
+            m_recipes.Add(recipe);
         }
     }
 }
