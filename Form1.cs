@@ -58,15 +58,5 @@ namespace RecipeManager
             m_recipes = m_recipeStore.Load();
             m_recipeUserInterface.PopulateList(m_recipes);
         }
-
-        private void SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
-            {
-                m_recipeUserInterface.Name = recipe.Name;
-                m_recipeUserInterface.Contents = recipe.Text;
-                break;
-            }
-        }
     }
 }

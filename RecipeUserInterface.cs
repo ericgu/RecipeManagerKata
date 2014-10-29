@@ -34,6 +34,7 @@ namespace RecipeManager
             m_newButton.Click += newButton_Click;
             m_saveButton.Click += SaveButtonClick;
             m_deleteButton.Click += DeleteButtonClick;
+            m_listView.SelectedIndexChanged += SelectedIndexChanged;
         }
 
         void DeleteButtonClick(object sender, EventArgs e)
@@ -91,6 +92,16 @@ namespace RecipeManager
         {
             Name = "";
             Contents = "";
+        }
+
+        public void SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Recipe recipe in SelectedRecipes)
+            {
+                Name = recipe.Name;
+                Contents = recipe.Text;
+                break;
+            }
         }
     }
 }
