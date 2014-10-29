@@ -26,7 +26,7 @@ namespace RecipeManager
             }
         }
 
-        public static ListView.SelectedListViewItemCollection SelectedItems(ListView listView, RecipeUserInterface recipeUserInterface)
+        public ListView.SelectedListViewItemCollection SelectedItems(ListView listView)
         {
             return listView.SelectedItems;
         }

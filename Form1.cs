@@ -34,7 +34,7 @@ namespace RecipeManager
 
         private void DeleteClick(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection selectedListViewItemCollection = RecipeUserInterface.SelectedItems(listView1, m_recipeUserInterface);
+            ListView.SelectedListViewItemCollection selectedListViewItemCollection = m_recipeUserInterface.SelectedItems(listView1);
 
             foreach (RecipeListViewItem recipeListViewItem in selectedListViewItemCollection)
             {
