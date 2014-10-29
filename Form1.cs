@@ -46,9 +46,7 @@ namespace RecipeManager
 
         private void NewClick(object sender, EventArgs e)
         {
-            string ret;
             m_recipeUserInterface.Name = "";
-            ret;
             textBoxObjectData.Text = "";
         }
 
@@ -63,9 +61,7 @@ namespace RecipeManager
         {
             foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
             {
-                string ret;
                 m_recipeUserInterface.Name = recipe.Name;
-                ret;
                 textBoxObjectData.Text = recipe.Text;
                 break;
             }
