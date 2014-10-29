@@ -9,16 +9,16 @@ namespace RecipeManager
 {
     class RecipeStoreSimulator : IRecipeStore
     {
-        private readonly List<Recipe> m_recipes = new List<Recipe>();
+        private List<Recipe> m_recipes = new List<Recipe>();
  
         public List<Recipe> LoadRecipes()
         {
             return m_recipes.ToList();
         }
 
-        public void DeleteRecipe(Recipe recipe)
+        public void DeleteRecipe(Recipe recipeToDelete)
         {
-            throw new NotImplementedException();
+            m_recipes = m_recipes.Where(recipe => recipe.Name != recipeToDelete.Name).ToList();
         }
 
         public void SaveRecipe(Recipe recipe)
