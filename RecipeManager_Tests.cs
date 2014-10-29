@@ -18,6 +18,11 @@ namespace RecipeManager
         {
             m_recipeManager = new RecipeManager(m_recipeStore, m_recipeUserInterface);
         }
+        private void AddTwoRecipesToStore()
+        {
+            m_recipeStore.Save(new Recipe {Name = "Toast", Text = "Put in toaster"});
+            m_recipeStore.Save(new Recipe {Name = "HashBrowns", Text = "Fry"});
+        }
 
         [TestMethod()]
         public void When_I_create_a_RecipeManager__it_is_not_null()
@@ -28,7 +33,7 @@ namespace RecipeManager
         }
 
         [TestMethod()]
-        public void When_I_enter_text_and_contents_and_click_save__the_recipe_should_be_in_the_store()
+        public void When_I_enter_text_and_contents_and_click_save__the_recipe_should_be_in_the_store_and_the_displayed_list()
         {
             CreateRecipeManager();
 
@@ -38,8 +43,11 @@ namespace RecipeManager
 
             var recipes = m_recipeStore.Load();
 
-            RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(recipes,
-                new Recipe {Name = "Toast", Text = "Put in toaster"});
+            var expectedRecipe = new Recipe {Name = "Toast", Text = "Put in toaster"};
+            RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(recipes, expectedRecipe);
+
+            RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(m_recipeUserInterface.SimulateReadRecipeList(),
+                expectedRecipe);
         }
 
         [TestMethod()]
@@ -53,12 +61,6 @@ namespace RecipeManager
 
             var recipesInStore = m_recipeStore.Load();
             RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(recipes, recipesInStore[0], recipesInStore[1]);
-        }
-
-        private void AddTwoRecipesToStore()
-        {
-            m_recipeStore.Save(new Recipe {Name = "Toast", Text = "Put in toaster"});
-            m_recipeStore.Save(new Recipe {Name = "HashBrowns", Text = "Fry"});
         }
 
         [TestMethod()]
