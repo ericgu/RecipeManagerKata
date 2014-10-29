@@ -23,6 +23,19 @@ namespace RecipeManager
             m_listView = listView;
             m_textBoxName = textBoxName;
             m_textBoxContents = textBoxContents;
+
+            m_newButton.Click += m_newButton_Click;
+            m_saveButton.Click += m_saveButton_Click;
+        }
+
+        void m_saveButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void m_newButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void PopulateList(List<Recipe> mRecipes)
