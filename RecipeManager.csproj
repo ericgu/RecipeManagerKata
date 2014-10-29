@@ -52,6 +52,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IRecipeStore.cs" />
+    <Compile Include="IRecipeUserInterface.cs" />
     <Compile Include="RecipeListViewItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
