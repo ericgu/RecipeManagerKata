@@ -40,12 +40,12 @@ namespace RecipeManager
             set { m_textBoxName.Text = value; }
         }
 
-        public static string SetContents(TextBox textBoxContents, string empty)
+        public string SetContents(TextBox textBoxContents, string empty)
         {
             return textBoxContents.Text = empty;
         }
 
-        public static string GetContents(TextBox textBoxContents)
+        public string GetContents(TextBox textBoxContents)
         {
             return textBoxContents.Text;
         }
