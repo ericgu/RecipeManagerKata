@@ -10,8 +10,8 @@ namespace RecipeManager
     [TestClass]
     public class RecipeStoreSimulator_Tests
     {
-        //private IRecipeStore m_simulator = new RecipeStoreSimulator();
-        private IRecipeStore m_simulator = new RecipeStore(@"e:\TempRecipeStore");
+        private IRecipeStore m_simulator = new RecipeStoreSimulator();
+        //private IRecipeStore m_simulator = new RecipeStore(@"e:\TempRecipeStore");
 
         [TestMethod()]
         public void When_I_create_a_RecipeStoreSimulator__it_is_not_null()
