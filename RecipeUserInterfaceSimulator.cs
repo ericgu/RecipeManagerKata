@@ -38,6 +38,8 @@ namespace RecipeManager
 
         public void ClearNameAndContents()
         {
+            Name = String.Empty;
+            Contents = String.Empty;
         }
 
         public void SelectedIndexChanged(object sender, EventArgs e)
@@ -68,6 +70,22 @@ namespace RecipeManager
             if (SelectedRecipesChanged != null)
             {
                 SelectedRecipesChanged(this, null);
+            }
+        }
+
+        internal void SimulatePressNew()
+        {
+            if (NewRequested != null)
+            {
+                NewRequested(this, null);
+            }
+        }
+
+        internal void SimulatePressDelete()
+        {
+            if (DeleteRequested != null)
+            {
+                DeleteRequested(this, null);
             }
         }
     }

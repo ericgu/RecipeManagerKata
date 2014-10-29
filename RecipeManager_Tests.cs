@@ -81,7 +81,7 @@ namespace RecipeManager
         }
 
         [TestMethod()]
-        public void When_I_start_with_two_recipes_in_the_store_and_select_the_first_one_and_then_deselect_it__the_selecte_recipe_and_name_and_text_should_be_clear()
+        public void When_I_start_with_two_recipes_in_the_store_and_select_the_first_one_and_then_deselect_it__the_selected_recipe_and_name_and_text_should_be_clear()
         {
             AddTwoRecipesToStore();
 
@@ -95,6 +95,38 @@ namespace RecipeManager
 
             Assert.AreEqual(0, m_recipeUserInterface.SelectedRecipes.Count());
         }
-    
+
+        [TestMethod()]
+        public void When_I_start_with_two_recipes_in_the_store_and_select_the_first_one_and_then_click_new__the_name_and_text_should_be_clear()
+        {
+            AddTwoRecipesToStore();
+
+            RecipeManager recipeManager = new RecipeManager(m_recipeStore, m_recipeUserInterface);
+
+            m_recipeUserInterface.SimulateSelectRecipe(1);
+            m_recipeUserInterface.SimulatePressNew();
+
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Name);
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Contents);
+        }
+
+
+        [TestMethod()]
+        public void When_I_start_with_two_recipes_in_the_store_and_select_the_first_one_and_then_click_delete__the_name_and_text_should_be_clear_and_the_recipe_should_be_deleted()
+        {
+            AddTwoRecipesToStore();
+
+            RecipeManager recipeManager = new RecipeManager(m_recipeStore, m_recipeUserInterface);
+
+            var recipesInStoreAtStart = m_recipeStore.Load();
+
+            m_recipeUserInterface.SimulateSelectRecipe(0);
+            m_recipeUserInterface.SimulatePressDelete();
+
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Name);
+            Assert.AreEqual(String.Empty, m_recipeUserInterface.Contents);
+
+            RecipeStoreSimulator_Tests.ListContainsRecipesInOrder(m_recipeStore.Load(), recipesInStoreAtStart[1]);
+        }  
     }
 }
