@@ -16,20 +16,32 @@ namespace RecipeManager
         private TextBox m_textBoxContents;
         private Button m_newButton;
         private Button m_saveButton;
+        private Button m_deleteButton;
 
         public event EventHandler NewRequested;
-        public event EventHandler SaveRequested; 
+        public event EventHandler SaveRequested;
+        public event EventHandler DeleteRequested; 
 
-        public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents, Button newButton, Button saveButton)
+        public RecipeUserInterface(ListView listView, TextBox textBoxName, TextBox textBoxContents, Button newButton, Button saveButton, Button deleteButton)
         {
+            m_deleteButton = deleteButton;
             m_saveButton = saveButton;
             m_newButton = newButton;
             m_listView = listView;
             m_textBoxName = textBoxName;
             m_textBoxContents = textBoxContents;
 
-            m_newButton.Click += NewButtonClick;
+            m_newButton.Click += newButton_Click;
             m_saveButton.Click += SaveButtonClick;
+            m_deleteButton.Click += DeleteButtonClick;
+        }
+
+        void DeleteButtonClick(object sender, EventArgs e)
+        {
+            if (DeleteRequested != null)
+            {
+                DeleteRequested(this, null);
+            }
         }
 
         void SaveButtonClick(object sender, EventArgs e)
@@ -40,7 +52,7 @@ namespace RecipeManager
             }
         }
 
-        void NewButtonClick(object sender, EventArgs e)
+        void newButton_Click(object sender, EventArgs e)
         {
             if (NewRequested != null)
             {

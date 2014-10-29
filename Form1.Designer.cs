@@ -57,7 +57,17 @@
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.DeleteClick);
+            this.buttonDelete.Click += new System.EventHandler((sender1, e1) =>
+            {
+                foreach (Recipe recipe in this.m_recipeUserInterface.SelectedRecipes)
+                {
+                    this.m_recipeStore.Delete(recipe);
+                }
+
+                this.LoadRecipes();
+
+                this.m_recipeUserInterface.ClearNameAndContents();
+            });
             // 
             // buttonNew
             // 
@@ -67,7 +77,6 @@
             this.buttonNew.TabIndex = 3;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.NewClick);
             // 
             // buttonSave
             // 

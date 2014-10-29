@@ -21,11 +21,24 @@ namespace RecipeManager
         {
             InitializeComponent();
 
-            m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData, buttonNew, buttonSave);
+            m_recipeUserInterface = new RecipeUserInterface(listView1, textBoxName, textBoxObjectData, buttonNew, buttonSave, buttonDelete);
             m_recipeUserInterface.NewRequested += NewRequested;
             m_recipeUserInterface.SaveRequested += SaveRequested;
+            m_recipeUserInterface.DeleteRequested += DeleteRequested;
 
             LoadRecipes();
+        }
+
+        void DeleteRequested(object sender, EventArgs e)
+        {
+            foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
+            {
+                m_recipeStore.Delete(recipe);
+            }
+
+            LoadRecipes();
+
+            m_recipeUserInterface.ClearNameAndContents();
         }
 
         void SaveRequested(object sender, EventArgs e)
@@ -44,18 +57,6 @@ namespace RecipeManager
         {
             m_recipes = m_recipeStore.Load();
             m_recipeUserInterface.PopulateList(m_recipes);
-        }
-
-        private void DeleteClick(object sender, EventArgs e)
-        {
-            foreach (Recipe recipe in m_recipeUserInterface.SelectedRecipes)
-            {
-                m_recipeStore.Delete(recipe);
-            }
-
-            LoadRecipes();
-
-            m_recipeUserInterface.ClearNameAndContents();
         }
 
         private void SelectedIndexChanged(object sender, EventArgs e)
