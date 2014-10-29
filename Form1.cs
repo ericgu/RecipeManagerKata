@@ -25,7 +25,7 @@ namespace RecipeManager
 
         private void LoadRecipes()
         {
-            m_recipes = m_recipeStore.LoadRecipes();
+            m_recipes = m_recipeStore.Load();
 
             PopulateList();
         }
@@ -45,7 +45,7 @@ namespace RecipeManager
             foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
             {
                 m_recipes.Remove(recipeListViewItem.Recipe);
-                m_recipeStore.DeleteRecipe(recipeListViewItem.Recipe);
+                m_recipeStore.Delete(recipeListViewItem.Recipe);
             }
             PopulateList();
 
@@ -61,7 +61,7 @@ namespace RecipeManager
         private void SaveClick(object sender, EventArgs e)
         {
             Recipe recipe = new Recipe {Name = textBoxName.Text, Text = textBoxObjectData.Text};
-            m_recipeStore.SaveRecipe(recipe);
+            m_recipeStore.Save(recipe);
             LoadRecipes();
         }
 

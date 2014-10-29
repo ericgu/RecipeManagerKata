@@ -22,7 +22,7 @@ namespace RecipeManager
         [TestMethod()]
         public void When_I_create_a_RecipeStoreSimulator_and_call_LoadRecipes__it_returns_an_empty_list()
         {
-            var recipes = m_simulator.LoadRecipes();
+            var recipes = m_simulator.Load();
 
             ListContainsRecipesInOrder(recipes);
 
@@ -33,9 +33,9 @@ namespace RecipeManager
         public void When_I_call_SaveRecipe_and_call_LoadRecipes__it_returns_that_recipe()
         {
             Recipe recipe = new Recipe {Name = "Eggs", Text = "Cook eggs", Size = 9};
-            m_simulator.SaveRecipe(recipe);
+            m_simulator.Save(recipe);
 
-            var recipes = m_simulator.LoadRecipes();
+            var recipes = m_simulator.Load();
 
             ListContainsRecipesInOrder(recipes, recipe);
 
@@ -48,11 +48,11 @@ namespace RecipeManager
             IRecipeStore m_simulator = new RecipeStoreSimulator();
 
             Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
-            m_simulator.SaveRecipe(recipe1);
+            m_simulator.Save(recipe1);
             Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
-            m_simulator.SaveRecipe(recipe2);
+            m_simulator.Save(recipe2);
 
-            var recipes = m_simulator.LoadRecipes();
+            var recipes = m_simulator.Load();
 
             ListContainsRecipesInOrder(recipes, recipe1, recipe2);
 
@@ -63,13 +63,13 @@ namespace RecipeManager
         public void When_I_call_SaveRecipe_twice_Delete_one_recipe_and_call_LoadRecipes__it_returns_one_recipe()
         {
             Recipe recipe1 = new Recipe { Name = "Ham", Text = "Slice Ham", Size = 9 };
-            m_simulator.SaveRecipe(recipe1);
+            m_simulator.Save(recipe1);
             Recipe recipe2 = new Recipe { Name = "Eggs", Text = "Cook eggs", Size = 9 };
-            m_simulator.SaveRecipe(recipe2);
+            m_simulator.Save(recipe2);
 
-            m_simulator.DeleteRecipe(recipe1);
+            m_simulator.Delete(recipe1);
 
-            var recipes = m_simulator.LoadRecipes();
+            var recipes = m_simulator.Load();
 
             ListContainsRecipesInOrder(recipes, recipe2);
 
@@ -78,11 +78,11 @@ namespace RecipeManager
 
         private void DeleteAllRecipes()
         {
-            var recipes = m_simulator.LoadRecipes();
+            var recipes = m_simulator.Load();
 
             foreach (Recipe recipe in recipes)
             {
-                m_simulator.DeleteRecipe(recipe);
+                m_simulator.Delete(recipe);
             }
         }
 

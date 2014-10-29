@@ -29,18 +29,18 @@ namespace RecipeManager
             return new Recipe { Name = fileInfo.Name, Size = fileInfo.Length, Text = File.ReadAllText(fileInfo.FullName) };
         }
 
-        public List<Recipe> LoadRecipes()
+        public List<Recipe> Load()
         {
             return  GetFilesInDirectory()
                 .Select(fileInfo => CreateRecipeFromFile(fileInfo)).ToList();
         }
 
-        public void DeleteRecipe(Recipe recipe)
+        public void Delete(Recipe recipe)
         {
             File.Delete(GetRecipeFilename(recipe.Name));
         }
 
-        public void SaveRecipe(Recipe recipe)
+        public void Save(Recipe recipe)
         {
             File.WriteAllText(GetRecipeFilename(recipe.Name), recipe.Text);
         }

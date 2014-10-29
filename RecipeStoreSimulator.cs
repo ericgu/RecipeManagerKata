@@ -11,17 +11,17 @@ namespace RecipeManager
     {
         private List<Recipe> m_recipes = new List<Recipe>();
  
-        public List<Recipe> LoadRecipes()
+        public List<Recipe> Load()
         {
             return m_recipes.ToList();
         }
 
-        public void DeleteRecipe(Recipe recipeToDelete)
+        public void Delete(Recipe recipeToDelete)
         {
             m_recipes = m_recipes.Where(recipe => recipe.Name != recipeToDelete.Name).ToList();
         }
 
-        public void SaveRecipe(Recipe recipe)
+        public void Save(Recipe recipe)
         {
             m_recipes.Add(recipe);
         }
