@@ -34,7 +34,7 @@ namespace RecipeManager
 
         private void DeleteClick(object sender, EventArgs e)
         {
-            IEnumerable<Recipe> recipes = m_recipeUserInterface.SelectedItems();
+            IEnumerable<Recipe> recipes = m_recipeUserInterface.SelectedRecipes;
 
             foreach (Recipe recipe in recipes)
             {

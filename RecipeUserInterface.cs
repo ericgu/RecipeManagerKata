@@ -27,9 +27,9 @@ namespace RecipeManager
             }
         }
 
-        public IEnumerable<Recipe> SelectedItems()
+        public IEnumerable<Recipe> SelectedRecipes
         {
-            return m_listView.SelectedItems.Cast<RecipeListViewItem>().Select(item => item.Recipe);
+            get { return m_listView.SelectedItems.Cast<RecipeListViewItem>().Select(item => item.Recipe); }
         }
     }
 }
